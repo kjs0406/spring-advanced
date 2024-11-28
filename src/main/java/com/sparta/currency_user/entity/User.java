@@ -3,6 +3,8 @@ package com.sparta.currency_user.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.List;
+
 @Entity
 @Getter
 public class User {
@@ -19,4 +21,8 @@ public class User {
     }
 
     public User() {}
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<UserToCurrency> userToCurrencyList;
 }
