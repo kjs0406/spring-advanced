@@ -2,20 +2,30 @@ package com.sparta.currency_user.service;
 
 import com.sparta.currency_user.dto.UserRequestDto;
 import com.sparta.currency_user.dto.UserResponseDto;
+import com.sparta.currency_user.dto.UserToCurrencyRequestDto;
+import com.sparta.currency_user.dto.UserToCurrencyResponseDto;
+import com.sparta.currency_user.entity.Currency;
 import com.sparta.currency_user.entity.User;
+import com.sparta.currency_user.entity.UserToCurrency;
+import com.sparta.currency_user.repository.CurrencyRepository;
 import com.sparta.currency_user.repository.UserRepository;
+import com.sparta.currency_user.repository.UserToCurrencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final CurrencyRepository currencyRepository;
+    private final UserToCurrencyRepository userToCurrencyRepository;
 
     public UserResponseDto findById(Long id) {
+
         return new UserResponseDto(findUserById(id));
     }
 
@@ -38,5 +48,8 @@ public class UserService {
         this.findUserById(id);
         userRepository.deleteById(id);
     }
+
+
+
 
 }

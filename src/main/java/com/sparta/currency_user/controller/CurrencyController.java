@@ -29,4 +29,5 @@ public class CurrencyController {
     public ResponseEntity<CurrencyResponseDto> createCurrency(@RequestBody CurrencyRequestDto currencyRequestDto) {
         return ResponseEntity.ok().body(currencyService.save(currencyRequestDto));
     }
+
 }

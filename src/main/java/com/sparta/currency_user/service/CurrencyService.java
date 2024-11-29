@@ -17,6 +17,7 @@ public class CurrencyService {
     private final CurrencyRepository currencyRepository;
 
     public CurrencyResponseDto findById(Long id) {
+
         return new CurrencyResponseDto(findCurrencyById(id));
     }
 

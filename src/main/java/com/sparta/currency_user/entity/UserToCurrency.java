@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -19,7 +19,7 @@ public class UserToCurrency extends BaseEntity {
 
     Integer amountInKrw;
 
-    Float amountAfterExchange;
+    BigDecimal amountAfterExchange;
 
     String status;
 
@@ -30,4 +30,15 @@ public class UserToCurrency extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;
+
+    public UserToCurrency(User user, Currency currency, Integer amountInKrw ,BigDecimal amountAfterExchange) {
+        this.user = user;
+        this.currency = currency;
+        this.amountInKrw = amountInKrw;
+        this.amountAfterExchange = amountAfterExchange;
+    }
+
+    public void cancelCurrency(String status) {
+        this.status = "cancelled";
+        }
 }
